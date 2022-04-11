@@ -64,7 +64,7 @@ def ShowDashboardPage():
 
 
     
-    st.write(df_cal)
+    # st.write(df_cal)
 
     MonthlyRate = df_cal['MonthlyRate'].values
     YearsSinceLastPromotion = df_cal['YearsSinceLastPromotion'].values
@@ -87,16 +87,18 @@ def ShowDashboardPage():
         columns=['MonthlyRate', 'YearsSinceLastPromotion', 'YearsAtCompany',
                         'TotalWorkingYears', 'NumCompaniesWorked', 'Prediction_PercentSalaryHike'])
                         
-    st.write(chart_data)       
+    # st.write(chart_data)       
 
     chart_data = chart_data.melt('Prediction_PercentSalaryHike', var_name='name', value_name='value')
-    st.write(chart_data)  
+    # st.write(chart_data)  
     # st.line_chart(chart_data)
     chart = alt.Chart(chart_data).mark_line().encode(
     x=alt.X('Prediction_PercentSalaryHike:N'),
     y=alt.Y('value:Q'),
     color=alt.Color("name:N")
     ).properties(title="Hello World")
+    st.write("""##### """)
+    st.write("""##### Impact on the variance of Inputs with the predicted salary hike""")
     st.altair_chart(chart, use_container_width=True)
 
 
